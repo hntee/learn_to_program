@@ -1,24 +1,25 @@
+# require 'pry'
+
 # 99 Bottles of Beer on the Wall
 def beer
-  $i = 99
-  while $i >= 0
-
-    if $i > 2
-      puts $i.to_s + ' bottles of beer on the wall, ' + $i.to_s + ' bottles of beer.'
-      puts 'Take one down and pass it around, ' + ($i - 1).to_s + ' bottles of beer on the wall.',''
-    elsif $i == 2
-      puts $i.to_s + ' bottles of beer on the wall, ' + $i.to_s + ' bottles of beer.'
-      puts 'Take one down and pass it around, ' + ($i - 1).to_s + ' bottle of beer on the wall.',''
-    elsif $i == 1
-      puts $i.to_s + ' bottle of beer on the wall, ' + $i.to_s + ' bottle of beer.'
+  i = 99
+  while i >= 0
+    # binding.pry
+    if i > 2
+      puts i.to_s + ' bottles of beer on the wall, ' + i.to_s + ' bottles of beer.'
+      puts 'Take one down and pass it around, ' + (i - 1).to_s + ' bottles of beer on the wall.',''
+    elsif i == 2
+      puts i.to_s + ' bottles of beer on the wall, ' + i.to_s + ' bottles of beer.'
+      puts 'Take one down and pass it around, ' + (i - 1).to_s + ' bottle of beer on the wall.',''
+    elsif i == 1
+      puts i.to_s + ' bottle of beer on the wall, ' + i.to_s + ' bottle of beer.'
       puts 'Take one down and pass it around, no more beer on the wall.',''
     else
       puts 'No more bottles of beer on the wall, no more bottles of beer. '
       puts 'Go to the store and buy some more, 99 bottles of beer on the wall.'
-    end
+    end  
 
-    $i -= 1    
-    
+    i -= 1
   end
 end
 
@@ -73,3 +74,5 @@ def display_leap_year
   end
 
 end
+
+beer
