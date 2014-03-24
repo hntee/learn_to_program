@@ -54,38 +54,6 @@ class Dragon
     self.dispatch
   end
 
-  def dispatch
-    options = ['feed', 'walk', 'put_to_bed', 'toss', 'rock']
-    puts "What do you want to do to #{@name}? " +
-         "(#{['feed', 'walk', 'put_to_bed', 'toss', 'rock'].join('/')})"
-    
-    action = gets.chomp
-
-    # if the input is not a method in the class
-    if !options.include?(action)
-      puts 'Invalid input. Please enter again.'
-      dispatch
-    end
-
-    # case action
-    # when 'feed'
-    #   self.feed
-    # when 'walk'
-    #   self.walk
-    # when 'put_to_bed'
-    #   self.put_to_bed
-    # when 'toss'
-    #   self.toss
-    # when 'rock'
-    #   self.rock
-    # end
-
-    eval('self.'+action)
-
-    # continue looping
-    dispatch
-  end
-
   def feed
     puts "You feed #{@name}."
     @stuff_in_belly = 10
@@ -134,6 +102,26 @@ class Dragon
 
   private
 
+  def dispatch
+    options = self.public_methods(false)
+    puts "What do you want to do to #{@name}? " +
+         "(#{['feed', 'walk', 'put_to_bed', 'toss', 'rock'].join('/')})"
+    
+    action = gets.chomp
+
+    # if the input is not a method in the class
+    if !options.include?(action.to_sym)
+      puts 'Invalid input. Please enter again.'
+      dispatch
+    end
+
+    eval('self.' + action)
+
+    # continue looping
+    dispatch
+  end
+
+
   def hungry?
     @stuff_in_belly <= 2
   end
@@ -181,3 +169,5 @@ end
 
 
 pet = Dragon.new 'Orange'
+# op = pet.public_methods(false).to_s.scan(/\w+/)
+# puts op.include?('feed')
