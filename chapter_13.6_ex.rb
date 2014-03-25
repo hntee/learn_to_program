@@ -105,7 +105,7 @@ class Dragon
   def dispatch
     options = self.public_methods(false)
     puts "What do you want to do to #{@name}? " +
-         "(#{['feed', 'walk', 'put_to_bed', 'toss', 'rock'].join('/')})"
+         "(#{options.to_s.scan(/\w+/).join('/')})"
     
     action = gets.chomp
 
@@ -115,7 +115,7 @@ class Dragon
       dispatch
     end
 
-    eval('self.' + action)
+    eval(action)
 
     # continue looping
     dispatch
