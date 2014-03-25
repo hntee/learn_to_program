@@ -12,7 +12,9 @@ puts 24 * days_in_a_year
 
 # minutes in a decade
 puts 'minutes in a decade: '
-puts 60 * 24 * days_in_a_year * 10
+# puts 60 * 24 * days_in_a_year * 10 -> wrong
+# correct:
+puts "#{60 * 24 * (365 * 10 + 2)} or #{60 * 24 * (365 * 10 + 3)}"
 
 # my age in seconds
 puts 'my age in seconds: '

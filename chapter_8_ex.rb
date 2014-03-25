@@ -1,25 +1,38 @@
 # build and sort an array
 def build_and_sort_an_array
 
-  $array = []
-  $i = 0
+  # $array = []
+  # $i = 0
 
+  # while true
+  #   word = gets.chomp()
+
+  #   # empty line or all chars are space -> stop
+  #   if ( word.length == 0 || !(word =~ /[^\s]/) )
+  #     break
+  #   end
+
+
+  #   $array[$i] = word
+  #   $i += 1
+
+  # end
+
+  # puts 'The sorted array is: '
+  # puts $array.sort()
+
+
+  # after correcting
+  words = []
   while true
     word = gets.chomp()
-
-    # empty line or all chars are space -> stop
-    if ( word.length == 0 || !(word =~ /[^\s]/) )
-      break
-    end
-
-
-    $array[$i] = word
-    $i += 1
-
+    break if word.empty?
+    words << word
   end
 
   puts 'The sorted array is: '
-  puts $array.sort()
+  puts words.sort
+
 
 end
 

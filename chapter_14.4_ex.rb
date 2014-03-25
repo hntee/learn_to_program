@@ -21,9 +21,11 @@ end
 def grandfather_clock &block
   require 'time'
 
-  hour = Time.new.hour
-  clock_count = hour % 12 == 0 ? 12 : hour % 12
-  
+  # hour = Time.new.hour
+  #clock_count = hour % 12 == 0 ? 12 : hour % 12
+
+  # this is more elegant
+  clock_count = (Time.new.hour + 11) % 12 + 1
   clock_count.times {block.call}
 end
 
@@ -47,17 +49,18 @@ end
 
 # better program logger
 $nesting_depth = 0
-$space = ' '
 
 def better_log string_description, &block
-  puts "#{$space * $nesting_depth * 2}" + 
+  prefix = ' ' * $nesting_depth * 2
+  
+  puts "#{prefix}" + 
        "Beginning \"#{string_description}\"..."
   $nesting_depth += 1
   ret_val = block.call
   $nesting_depth -= 1
-  puts "#{$space * $nesting_depth * 2}" + 
+  puts "#{prefix}" + 
        "...\"#{string_description}\" finished, returning \n" +
-       "#{$space * $nesting_depth * 2}#{ret_val}"
+       "#{prefix}#{ret_val}"
   
 end
 
