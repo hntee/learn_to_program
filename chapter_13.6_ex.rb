@@ -51,7 +51,7 @@ class Dragon
 
     puts "#{@name} is born."
 
-    self.dispatch
+    dispatch
   end
 
   def feed
